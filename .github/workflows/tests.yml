@@ -17,8 +17,8 @@ jobs:
         ports:
           - 3306:3306
       env:
-        MYSQL_DATABASE: pet
-        MYSQL_ALLOW_EMPTY_PASSWORD: yes
+       MYSQL_DATABASE: pet
+       MYSQL_ALLOW_EMPTY_PASSWORD: yes
 
     steps:
      - name: Checkout Code
