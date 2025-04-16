@@ -7,6 +7,18 @@ jobs:
   run-tests:
     runs-on: ubuntu-latest
 
+    services:
+      redis:
+        image: redis:7.4
+        ports:
+          - 6379:6379
+      mysql:
+        image: mysql:8.0
+        ports:
+          - 3306:3306
+      env:
+        MYSQL_DATABASE: pet
+        MYSQL_ALLOW_EMPTY_PASSWORD: yes
 
     steps:
      - name: Checkout Code
@@ -30,7 +42,7 @@ jobs:
      - name: Run Tests
        env:
         DB_CONNECTION: sqlite
-        DB_DATABASE: 
+        DB_DATABASE: ":memory:"
        run: php artisan test --compact
 
      
