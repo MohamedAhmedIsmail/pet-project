@@ -20,22 +20,23 @@ jobs:
           MYSQL_DATABASE: laravel
           MYSQL_ALLOW_EMPTY_PASSWORD: yes
 
+
     steps:
      - name: Checkout Code
        uses: actions/github-script@v7.0.1
+
        
-     - name: Setup PHP and Composer
-       uses: shivammathur/setup-php@v2
+     - name: Setup
+       uses: ./.github/actions/setup
        with:
         php-version: '8.3'
-        extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, gd, redis, igbinary, msgpack, memcached, gmp, :php-psr
-        tools: composer:v2
+        php-extensions: 'json, dom, curl, libxml, mbstring'
+        nova-email: ${{secrets.NOVA_EMAIL}}
+        nova-password: ${{secrets.NOVA_PASSWORD}}
+        coverage: xdebug
+     
+       
 
-     - name: Cache dependencies
-       uses: actions/cache@v4.0.2
-       with:
-         key: composer-cache-${{ hashFiles('**/composer.lock') }}
-         path: vendor/
 
      - name: Install Dependencies
        run: composer install -q --no-interaction
