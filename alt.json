@@ -1,0 +1,17 @@
+{
+    "posts":[
+        {
+            "title":"test test",
+            "description":"description description"
+        },
+        {
+            "title":"test test",
+            "description":"description description 2"
+        }
+    ],
+    "profile":{
+        "first_name": "Andrew name",
+        "last_name": "test last",
+        "email": "andrew@example.com2"
+    }
+}
